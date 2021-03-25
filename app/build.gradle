@@ -1,20 +1,21 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+
+    compileSdkVersion rootProject.androidCompileSdkVersion
+    buildToolsVersion rootProject.androidBuildToolsVersion
 
     defaultConfig {
         applicationId "ir.alirezanazari.clubhome"
-        minSdkVersion 24
-        targetSdkVersion 30
+        minSdkVersion rootProject.androidMinSdkVersion
+        targetSdkVersion rootProject.androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -23,22 +24,69 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs 'generated'
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+kapt {
+    useBuildCache = true
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
+    implementation project(":domain")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation rootProject.kotlin.main
+    implementation rootProject.kotlin.coroutineCore
+    implementation rootProject.kotlin.coroutineAndroid
+
+    implementation rootProject.androidx.annotation
+    implementation rootProject.androidx.appcompat
+    implementation rootProject.androidx.swiperefreshlayout
+    implementation rootProject.androidx.core
+    implementation rootProject.androidx.fragment
+    implementation rootProject.androidx.constraintlayout
+    implementation rootProject.androidx.cardview
+    implementation rootProject.androidx.lifecycle
+    implementation rootProject.androidx.recyclerview
+    implementation rootProject.androidx.navFrag
+    implementation rootProject.androidx.navUi
+    implementation rootProject.androidx.livedataKtx
+    implementation rootProject.androidx.viewmodelKtx
+    implementation rootProject.androidx.lifecycleRuntime
+    implementation rootProject.androidx.lifecycleCommon
+
+    implementation rootProject.tools.dagger
+    kapt rootProject.tools.daggerCompiler
+
+    implementation rootProject.tools.coil
+    implementation rootProject.tools.fastadapterMain
+    implementation rootProject.tools.fastadapterUi
+    implementation rootProject.tools.fastadapterScroll
+    implementation rootProject.tools.fastadapterExtBinding
+    implementation rootProject.tools.fastadapterExtUtils
+    implementation rootProject.tools.fastadapterDiff
+    implementation rootProject.tools.retrofit
+    implementation rootProject.tools.converter
+    implementation rootProject.tools.okhttp
+    implementation rootProject.tools.logging
+
 }
