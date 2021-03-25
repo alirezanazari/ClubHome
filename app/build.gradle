@@ -54,39 +54,44 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 dependencies {
     implementation project(":domain")
 
-    implementation rootProject.kotlin.main
-    implementation rootProject.kotlin.coroutineCore
-    implementation rootProject.kotlin.coroutineAndroid
+    implementation(rootProject.kotlin.main)
+    implementation(rootProject.kotlin.coroutineCore)
+    implementation(rootProject.kotlin.coroutineAndroid)
 
-    implementation rootProject.androidx.annotation
-    implementation rootProject.androidx.appcompat
-    implementation rootProject.androidx.swiperefreshlayout
-    implementation rootProject.androidx.core
-    implementation rootProject.androidx.fragment
-    implementation rootProject.androidx.constraintlayout
-    implementation rootProject.androidx.cardview
-    implementation rootProject.androidx.lifecycle
-    implementation rootProject.androidx.recyclerview
-    implementation rootProject.androidx.navFrag
-    implementation rootProject.androidx.navUi
-    implementation rootProject.androidx.livedataKtx
-    implementation rootProject.androidx.viewmodelKtx
-    implementation rootProject.androidx.lifecycleRuntime
-    implementation rootProject.androidx.lifecycleCommon
+    implementation(rootProject.androidx.annotation)
+    implementation(rootProject.androidx.appcompat)
+    implementation(rootProject.androidx.swiperefreshlayout)
+    implementation(rootProject.androidx.core)
+    implementation(rootProject.androidx.fragment)
+    implementation(rootProject.androidx.constraintlayout)
+    implementation(rootProject.androidx.cardview)
+    implementation(rootProject.androidx.lifecycle)
+    implementation(rootProject.androidx.recyclerview)
+    implementation(rootProject.androidx.navFrag)
+    implementation(rootProject.androidx.navUi)
+    implementation(rootProject.androidx.livedataKtx)
+    implementation(rootProject.androidx.viewmodelKtx)
+    implementation(rootProject.androidx.lifecycleRuntime)
+    implementation(rootProject.androidx.lifecycleCommon)
 
-    implementation rootProject.tools.dagger
-    kapt rootProject.tools.daggerCompiler
+    implementation(rootProject.tools.dagger)
+    kapt(rootProject.tools.daggerCompiler)
 
-    implementation rootProject.tools.coil
-    implementation rootProject.tools.fastadapterMain
-    implementation rootProject.tools.fastadapterUi
-    implementation rootProject.tools.fastadapterScroll
-    implementation rootProject.tools.fastadapterExtBinding
-    implementation rootProject.tools.fastadapterExtUtils
-    implementation rootProject.tools.fastadapterDiff
-    implementation rootProject.tools.retrofit
-    implementation rootProject.tools.converter
-    implementation rootProject.tools.okhttp
-    implementation rootProject.tools.logging
+    implementation(rootProject.tools.coil)
+    implementation(rootProject.tools.fastadapterMain)
+    implementation(rootProject.tools.fastadapterUi)
+    implementation(rootProject.tools.fastadapterScroll)
+    implementation(rootProject.tools.fastadapterExtBinding)
+    implementation(rootProject.tools.fastadapterExtUtils)
+    implementation(rootProject.tools.fastadapterDiff)
+    implementation(rootProject.tools.retrofit)
+    implementation(rootProject.tools.converter)
+    implementation(rootProject.tools.okhttp)
+    implementation(rootProject.tools.logging)
 
+    implementation(rootProject.tools.agora)
+    implementation(rootProject.tools.pubnub)
+    implementation(rootProject.tools.countryPicker) {
+        exclude group: 'androidx.annotation'
+    }
 }
