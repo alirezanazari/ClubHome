@@ -43,6 +43,7 @@ dependencies {
 
     implementation(rootProject.tools.retrofit)
     implementation(rootProject.tools.converter)
+    implementation(rootProject.tools.coroutineConverter)
     implementation(rootProject.tools.okhttp)
     implementation(rootProject.tools.logging)
 

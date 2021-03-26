@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import ir.alirezanazari.clubhome.BuildConfig
 import ir.alirezanazari.clubhome.Constants
+import ir.alirezanazari.data.util.ApiHelper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -36,6 +37,12 @@ object NetworkModule {
             .writeTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiHelper(client: OkHttpClient) : ApiHelper {
+        return ApiHelper(client , Constants.BASE_URL)
     }
 
 }
