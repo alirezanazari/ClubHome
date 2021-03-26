@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ir.alirezanazari.clubhome.di.annotations.ViewModelKey
 import ir.alirezanazari.clubhome.ui.main.MainViewModel
+import ir.alirezanazari.clubhome.ui.profile.ProfileViewModel
 import ir.alirezanazari.clubhome.ui.splash.SplashScreenViewModel
 
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
@@ -22,4 +23,9 @@ abstract class MainViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel::class)
+    abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel
 }
