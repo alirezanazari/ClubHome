@@ -1,0 +1,41 @@
+package ir.alirezanazari.clubhome.di.module
+
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import dagger.Module
+import dagger.Provides
+import ir.alirezanazari.clubhome.BuildConfig
+import ir.alirezanazari.clubhome.Constants
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
+
+// Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
+
+@Module
+object NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return GsonBuilder().create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        val logging = HttpLoggingInterceptor()
+        logging.level = if (BuildConfig.DEBUG)
+            HttpLoggingInterceptor.Level.BODY
+        else
+            HttpLoggingInterceptor.Level.NONE
+        return OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .readTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+            .build()
+    }
+
+}
