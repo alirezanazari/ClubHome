@@ -20,7 +20,7 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(resId: Int) :
 
     val viewModel: V by viewModelDelegate()
 
-    abstract val viewModelFactory: ViewModelFactory
+    abstract var viewModelFactory: ViewModelFactory
     abstract fun initViewModel(): Lazy<V>?
     abstract fun inject()
 

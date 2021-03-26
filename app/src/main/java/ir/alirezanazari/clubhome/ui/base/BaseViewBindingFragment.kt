@@ -15,7 +15,7 @@ abstract class BaseViewBindingFragment<B : ViewBinding>(resId: Int) : Fragment(r
     val binding get() = _binding!!
     private var _binding: B? = null
 
-    abstract fun bindView(inflater: LayoutInflater, container: ViewGroup?): B
+    abstract fun initBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
@@ -23,7 +23,7 @@ abstract class BaseViewBindingFragment<B : ViewBinding>(resId: Int) : Fragment(r
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = bindView(inflater, container)
+        _binding = initBinding(inflater, container)
         return binding.root
     }
 
