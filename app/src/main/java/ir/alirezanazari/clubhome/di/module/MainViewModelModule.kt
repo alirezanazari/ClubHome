@@ -15,5 +15,5 @@ abstract class MainViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(SplashScreenViewModel::class)
-    abstract fun provideSplashScreenViewModel(viewModel: SplashScreenViewModel): ViewModel
+    abstract fun bindSplashScreenViewModel(viewModel: SplashScreenViewModel): ViewModel
 }
