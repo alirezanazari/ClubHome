@@ -14,8 +14,8 @@ android {
         applicationId "ir.alirezanazari.clubhome"
         minSdkVersion rootProject.androidMinSdkVersion
         targetSdkVersion rootProject.androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
     }
 
     buildTypes {
@@ -53,6 +53,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 dependencies {
     implementation project(":domain")
+    implementation project(":data")
 
     implementation(rootProject.kotlin.main)
     implementation(rootProject.kotlin.coroutineCore)
@@ -84,10 +85,6 @@ dependencies {
     implementation(rootProject.tools.fastadapterExtBinding)
     implementation(rootProject.tools.fastadapterExtUtils)
     implementation(rootProject.tools.fastadapterDiff)
-    implementation(rootProject.tools.retrofit)
-    implementation(rootProject.tools.converter)
-    implementation(rootProject.tools.okhttp)
-    implementation(rootProject.tools.logging)
 
     implementation(rootProject.tools.agora)
     implementation(rootProject.tools.pubnub)

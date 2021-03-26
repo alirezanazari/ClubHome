@@ -1,5 +1,9 @@
 ext {
 
+    //----- General
+    versionName = '1.0'
+    versionCode = 1
+
     //----- Android config
     androidBuildToolsVersion = '30.0.3'
     androidMinSdkVersion = 24
