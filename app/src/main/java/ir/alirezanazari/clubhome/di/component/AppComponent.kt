@@ -25,7 +25,7 @@ interface AppComponent {
 
     fun registrationComponent(): RegistrationComponent.Factory
 
-    fun channelComponent(): ChannelComponent.Factory
+    fun chatComponent(): ChatComponent.Factory
 
     fun mainComponent(): MainComponent.Factory
 }
