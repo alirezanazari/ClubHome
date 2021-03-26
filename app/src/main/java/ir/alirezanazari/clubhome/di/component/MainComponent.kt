@@ -3,6 +3,7 @@ package ir.alirezanazari.clubhome.di.component
 import dagger.Subcomponent
 import ir.alirezanazari.clubhome.di.module.MainViewModelModule
 import ir.alirezanazari.clubhome.di.scope.MainScope
+import ir.alirezanazari.clubhome.ui.main.MainFragment
 import ir.alirezanazari.clubhome.ui.splash.SplashScreenFragment
 
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
@@ -17,4 +18,5 @@ interface MainComponent {
     }
 
     fun inject(fragment: SplashScreenFragment)
+    fun inject(fragment: MainFragment)
 }
