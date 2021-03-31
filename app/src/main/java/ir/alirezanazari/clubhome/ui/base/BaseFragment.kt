@@ -35,6 +35,7 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(resId: Int) :
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(ResourcesCompat.getColor(resources, R.color.background, null))
         bindViews(savedInstanceState)
+        doLogics()
     }
 
     override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory =
@@ -49,5 +50,5 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(resId: Int) :
      */
     open fun onFragmentStarted() {}
     open fun bindViews(savedInstanceState: Bundle?) {}
-
+    open fun doLogics() {}
 }
