@@ -1,5 +1,6 @@
 package ir.alirezanazari.clubhome.ui.login
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -7,6 +8,7 @@ import ir.alirezanazari.clubhome.R
 import ir.alirezanazari.clubhome.databinding.FragmentLoginBinding
 import ir.alirezanazari.clubhome.ui.base.BaseFragment
 import ir.alirezanazari.clubhome.util.ViewModelFactory
+import ir.alirezanazari.clubhome.util.onBackPressed
 import javax.inject.Inject
 
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
@@ -30,4 +32,16 @@ class LoginFragment :
         return FragmentLoginBinding.inflate(inflater, container, false)
     }
 
+    override fun bindViews(savedInstanceState: Bundle?) {
+        super.bindViews(savedInstanceState)
+        binding.apply {
+            countryPickerView.registerPhoneNumberTextView(phoneEditText)
+        }
+    }
+
+    override fun doLogics() {
+        onBackPressed {
+            requireActivity().finish()
+        }
+    }
 }
