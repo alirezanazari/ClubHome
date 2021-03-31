@@ -7,8 +7,6 @@ import dagger.Provides
 import ir.alirezanazari.clubhome.BuildConfig
 import ir.alirezanazari.clubhome.Constants
 import ir.alirezanazari.data.net.*
-import ir.alirezanazari.data.repository.RegisterRepositoryImpl
-import ir.alirezanazari.domain.repository.RegisterRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -57,10 +55,5 @@ object NetworkModule {
     @Singleton
     fun provideNetworkManager(restApi: RestApi, errorHandler: ErrorHandler): NetworkManager {
         return NetworkManagerImpl(restApi, errorHandler)
-    }
-
-    @Provides
-    fun provideRegisterRepository(networkManager: NetworkManager): RegisterRepository {
-        return RegisterRepositoryImpl(networkManager)
     }
 }

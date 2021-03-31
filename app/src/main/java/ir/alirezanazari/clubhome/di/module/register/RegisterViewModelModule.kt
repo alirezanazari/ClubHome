@@ -1,4 +1,4 @@
-package ir.alirezanazari.clubhome.di.module
+package ir.alirezanazari.clubhome.di.module.register
 
 import androidx.lifecycle.ViewModel
 import dagger.Binds
