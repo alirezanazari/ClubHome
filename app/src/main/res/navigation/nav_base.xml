@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_base"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="ir.alirezanazari.clubhome.ui.splash.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreen_to_main"
+            app:destination="@id/nav_main" />
+        <action
+            android:id="@+id/action_splashScreen_to_register"
+            app:destination="@id/nav_register" />
+    </fragment>
+
+    <include app:graph="@navigation/nav_main" />
+
+    <include app:graph="@navigation/nav_register" />
+
+</navigation>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_chat"
+    app:startDestination="@id/chatFragment">
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="ir.alirezanazari.clubhome.ui.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chat_to_followings"
+            app:destination="@id/followingsFragment" />
+        <action
+            android:id="@+id/action_chat_to_followers"
+            app:destination="@id/followersFragment" />
+        <action
+            android:id="@+id/action_chat_to_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/followersFragment"
+        android:name="ir.alirezanazari.clubhome.ui.followers.FollowersFragment"
+        android:label="FollowersFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_followers_to_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/followingsFragment"
+        android:name="ir.alirezanazari.clubhome.ui.followings.FollowingsFragment"
+        android:label="FollowingsFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_followings_to_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
+
+    <include app:graph="@navigation/nav_profile" />
+
+</navigation>
