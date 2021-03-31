@@ -4,5 +4,5 @@ package ir.alirezanazari.domain.entity.base
 
 data class ErrorResponse(
     val status: Int = 0,
-    val message: String = ""
+    val message: String? = ""
 )

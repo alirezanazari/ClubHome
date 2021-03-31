@@ -6,7 +6,9 @@ import dagger.Module
 import dagger.Provides
 import ir.alirezanazari.clubhome.BuildConfig
 import ir.alirezanazari.clubhome.Constants
-import ir.alirezanazari.data.util.ApiHelper
+import ir.alirezanazari.data.net.*
+import ir.alirezanazari.data.repository.RegisterRepositoryImpl
+import ir.alirezanazari.domain.repository.RegisterRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -41,8 +43,24 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiHelper(client: OkHttpClient) : ApiHelper {
-        return ApiHelper(client , Constants.BASE_URL)
+    fun provideApiHelper(client: OkHttpClient): RestApi {
+        return ApiHelper(client, Constants.BASE_URL)
     }
 
+    @Provides
+    @Singleton
+    fun provideErrorHandler(): ErrorHandler {
+        return ErrorHandlerImpl()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkManager(restApi: RestApi, errorHandler: ErrorHandler): NetworkManager {
+        return NetworkManagerImpl(restApi, errorHandler)
+    }
+
+    @Provides
+    fun provideRegisterRepository(networkManager: NetworkManager): RegisterRepository {
+        return RegisterRepositoryImpl(networkManager)
+    }
 }
