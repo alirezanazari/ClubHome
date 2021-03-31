@@ -1,11 +1,12 @@
 package ir.alirezanazari.clubhome.ui.base
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import ir.alirezanazari.clubhome.G
+import ir.alirezanazari.clubhome.R
 import ir.alirezanazari.clubhome.di.component.AppComponent
 import ir.alirezanazari.clubhome.util.ViewModelFactory
 import kotlin.properties.ReadOnlyProperty
@@ -32,7 +33,7 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(resId: Int) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setBackgroundColor(Color.WHITE)
+        view.setBackgroundColor(ResourcesCompat.getColor(resources, R.color.background, null))
         bindViews(savedInstanceState)
     }
 
