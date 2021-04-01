@@ -1,5 +1,6 @@
 package ir.alirezanazari.clubhome.di.module
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -25,13 +26,20 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideRequestInterceptor(context: Context): RequestInterceptor {
+        return RequestInterceptor(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(interceptor: RequestInterceptor): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = if (BuildConfig.DEBUG)
             HttpLoggingInterceptor.Level.BODY
         else
             HttpLoggingInterceptor.Level.NONE
         return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .addInterceptor(logging)
             .readTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
