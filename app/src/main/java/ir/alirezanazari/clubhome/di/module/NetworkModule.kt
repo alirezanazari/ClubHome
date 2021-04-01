@@ -8,6 +8,7 @@ import dagger.Provides
 import ir.alirezanazari.clubhome.BuildConfig
 import ir.alirezanazari.clubhome.Constants
 import ir.alirezanazari.data.net.*
+import ir.alirezanazari.data.util.SessionManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -26,8 +27,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRequestInterceptor(context: Context): RequestInterceptor {
-        return RequestInterceptor(context)
+    fun provideRequestInterceptor(context: Context, sessionManager: SessionManager): RequestInterceptor {
+        return RequestInterceptor(context, sessionManager)
     }
 
     @Provides

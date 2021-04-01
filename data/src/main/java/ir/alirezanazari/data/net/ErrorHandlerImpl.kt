@@ -33,7 +33,7 @@ class ErrorHandlerImpl : ErrorHandler {
                     errorResponse.error_message?.let { message ->
                         ErrorEntity.ApiError(
                             message,
-                            throwable.response()?.code() ?: 500
+                            throwable.code() ?: 500
                         )
                     } ?: showServerError()
                 }
