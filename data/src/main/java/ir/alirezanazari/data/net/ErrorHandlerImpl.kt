@@ -30,7 +30,7 @@ class ErrorHandlerImpl : ErrorHandler {
             val bufferedSource = throwable.response()?.errorBody()?.source()
             bufferedSource?.let {
                 convertToErrorModel(it).let { errorResponse ->
-                    errorResponse.message?.let { message ->
+                    errorResponse.error_message?.let { message ->
                         ErrorEntity.ApiError(
                             message,
                             throwable.response()?.code() ?: 500
