@@ -10,9 +10,9 @@ import retrofit2.http.POST
 interface RestApi {
 
     @POST("start_phone_number_auth")
-    fun startPhoneNumberAuth(@Body request: StartPhoneNumberAuth.Request): StartPhoneNumberAuth.Response
+    suspend fun startPhoneNumberAuth(@Body request: StartPhoneNumberAuth.Request): StartPhoneNumberAuth.Response
 
     @POST("complete_phone_number_auth")
-    fun completePhoneNumberAuth(@Body request: CompletePhoneNumberAuth.Request): CompletePhoneNumberAuth.Response
+    suspend fun completePhoneNumberAuth(@Body request: CompletePhoneNumberAuth.Request): CompletePhoneNumberAuth.Response
 
 }

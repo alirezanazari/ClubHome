@@ -4,7 +4,7 @@ package ir.alirezanazari.clubhome
 
 object Constants {
 
-    const val BASE_URL = ""
+    const val BASE_URL = "https://www.clubhouseapi.com/api/"
     const val REQUEST_TIMEOUT = 16L
 
 }
