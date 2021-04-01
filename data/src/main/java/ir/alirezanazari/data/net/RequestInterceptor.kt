@@ -2,6 +2,7 @@ package ir.alirezanazari.data.net
 
 import android.content.Context
 import android.os.LocaleList
+import ir.alirezanazari.data.util.SessionManager
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.*
@@ -9,7 +10,8 @@ import java.util.*
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
 
 class RequestInterceptor constructor(
-    private val context: Context
+    private val context: Context,
+    private val sessionManager: SessionManager
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -21,7 +23,7 @@ class RequestInterceptor constructor(
             .addHeader("CH-AppBuild", API_BUILD_ID)
             .addHeader("CH-AppVersion", API_BUILD_VERSION)
             .addHeader("User-Agent", API_UA)
-            .addHeader("CH-DeviceId", UUID.randomUUID().toString().toUpperCase(Locale.ENGLISH))
+            .addHeader("CH-DeviceId", sessionManager.deviceID.orEmpty())
             .build()
         return chain.proceed(newRequest)
     }

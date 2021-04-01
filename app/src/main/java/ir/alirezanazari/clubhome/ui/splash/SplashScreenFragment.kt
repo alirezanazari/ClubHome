@@ -9,6 +9,7 @@ import ir.alirezanazari.clubhome.R
 import ir.alirezanazari.clubhome.databinding.FragmentSplashScreenBinding
 import ir.alirezanazari.clubhome.ui.base.BaseFragment
 import ir.alirezanazari.clubhome.util.ViewModelFactory
+import ir.alirezanazari.data.util.SessionManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +21,9 @@ class SplashScreenFragment :
 
     @Inject
     override lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     override fun initViewModel(): Lazy<SplashScreenViewModel> = viewModels()
 
@@ -36,6 +40,7 @@ class SplashScreenFragment :
 
     override fun onResume() {
         super.onResume()
+        sessionManager.load()
         lifecycleScope.launch {
             delay(1000)
             //todo : check user is login or not, then navigate to login or main fragment

@@ -3,6 +3,7 @@ package ir.alirezanazari.clubhome.di.component
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
+import ir.alirezanazari.clubhome.di.module.AppModule
 import ir.alirezanazari.clubhome.di.module.NetworkModule
 import ir.alirezanazari.clubhome.di.module.ViewModelModule
 import javax.inject.Singleton
@@ -12,6 +13,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        AppModule::class,
         NetworkModule::class,
         ViewModelModule::class
     ]
