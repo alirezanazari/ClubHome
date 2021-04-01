@@ -48,6 +48,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         style="@style/Button"
         android:text="@string/next"
