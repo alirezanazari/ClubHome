@@ -4,5 +4,5 @@ package ir.alirezanazari.domain.entity.base
 
 open class BaseResponse(
     val success: Boolean = false,
-    val errorMessage: String? = null
+    val error_message: String? = null
 )

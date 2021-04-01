@@ -1,6 +1,7 @@
 package ir.alirezanazari.clubhome.di.module
 
 import android.content.Context
+import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -22,7 +23,11 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideGson(): Gson {
-        return GsonBuilder().create()
+        return GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+            .disableHtmlEscaping()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create()
     }
 
     @Provides
@@ -50,8 +55,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiHelper(client: OkHttpClient): RestApi {
-        return ApiHelper(client, Constants.BASE_URL)
+    fun provideApiHelper(client: OkHttpClient, gson: Gson): RestApi {
+        return ApiHelper(client, gson, Constants.BASE_URL)
     }
 
     @Provides

@@ -46,7 +46,7 @@ class LoginFragment :
             actionButton.setOnClickListener {
                 val number = phoneEditText.text.toString()
                 if (number.isPhoneNumber()) {
-                    viewModel.login(number)
+                    viewModel.login(countryPickerView.number)
                 }
             }
         }
