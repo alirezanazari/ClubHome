@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.alirezanazari.clubhome">
+    package="ir.alirezanazari.clubhome"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -10,7 +11,7 @@
     <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".G"
@@ -20,21 +21,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubHome">
+
         <activity
             android:name=".ui.MainActivity"
-            android:screenOrientation="portrait">
+            tools:ignore="LockedOrientationActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="locale|layoutDirection"
+            android:launchMode="singleInstance"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:host="ios.joinclubhouse.com" android:pathPrefix="/room/" android:scheme="https"/>
-                <data android:host="ios.joinclubhouse.com" android:pathPrefix="/event/" android:scheme="https"/>
-                <data android:host="www.joinclubhouse.com" android:pathPrefix="/room/" android:scheme="https"/>
-                <data android:host="www.joinclubhouse.com" android:pathPrefix="/event/" android:scheme="https"/>
+
+                <data
+                    android:host="ios.joinclubhouse.com"
+                    android:pathPrefix="/room/"
+                    android:scheme="https" />
+                <data
+                    android:host="ios.joinclubhouse.com"
+                    android:pathPrefix="/event/"
+                    android:scheme="https" />
+                <data
+                    android:host="www.joinclubhouse.com"
+                    android:pathPrefix="/room/"
+                    android:scheme="https" />
+                <data
+                    android:host="www.joinclubhouse.com"
+                    android:pathPrefix="/event/"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
     </application>

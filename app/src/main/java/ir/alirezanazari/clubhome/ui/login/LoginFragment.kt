@@ -9,6 +9,7 @@ import ir.alirezanazari.clubhome.databinding.FragmentLoginBinding
 import ir.alirezanazari.clubhome.ui.base.BaseFragment
 import ir.alirezanazari.clubhome.util.ViewModelFactory
 import ir.alirezanazari.clubhome.util.onBackPressed
+import ir.alirezanazari.clubhome.util.showKeyboard
 import javax.inject.Inject
 
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
@@ -34,7 +35,9 @@ class LoginFragment :
 
     override fun bindViews(savedInstanceState: Bundle?) {
         super.bindViews(savedInstanceState)
+        resizeWindowOnKeyboard(true)
         binding.apply {
+            phoneEditText.showKeyboard()
             countryPickerView.registerPhoneNumberTextView(phoneEditText)
         }
     }

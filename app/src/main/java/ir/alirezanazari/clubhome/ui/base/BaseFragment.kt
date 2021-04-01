@@ -2,12 +2,14 @@ package ir.alirezanazari.clubhome.ui.base
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import ir.alirezanazari.clubhome.G
 import ir.alirezanazari.clubhome.R
 import ir.alirezanazari.clubhome.di.component.AppComponent
+import ir.alirezanazari.clubhome.ui.MainActivity
 import ir.alirezanazari.clubhome.util.ViewModelFactory
 import kotlin.properties.ReadOnlyProperty
 
@@ -43,6 +45,15 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(resId: Int) :
 
     fun getAppComponent(): AppComponent {
         return (requireActivity().application as G).appComponent
+    }
+
+    fun resizeWindowOnKeyboard(enabled: Boolean) {
+        requireActivity().window.setSoftInputMode(
+            if (enabled)
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+            else
+                (activity as MainActivity).originalSoftInputMode!!
+        )
     }
 
     /**
