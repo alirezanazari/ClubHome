@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import ir.alirezanazari.clubhome.R
 import ir.alirezanazari.clubhome.databinding.FragmentSplashScreenBinding
 import ir.alirezanazari.clubhome.ui.base.BaseFragment
 import ir.alirezanazari.clubhome.util.ViewModelFactory
-import ir.alirezanazari.data.util.SessionManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,9 +21,6 @@ class SplashScreenFragment :
 
     @Inject
     override lateinit var viewModelFactory: ViewModelFactory
-
-    @Inject
-    lateinit var sessionManager: SessionManager
 
     override fun initViewModel(): Lazy<SplashScreenViewModel> = viewModels()
 
@@ -38,13 +35,26 @@ class SplashScreenFragment :
         return FragmentSplashScreenBinding.inflate(inflater, container, false)
     }
 
+    override fun onFragmentStarted() {
+        viewModel.loadSessionManager()
+    }
+
     override fun onResume() {
         super.onResume()
-        sessionManager.load()
         lifecycleScope.launch {
             delay(1000)
-            //todo : check user is login or not, then navigate to login or main fragment
-            findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenToRegister())
+            findNavController().navigate(getNextStep())
+        }
+    }
+
+    private fun getNextStep(): NavDirections {
+        return if (viewModel.isLoggedIn) {
+            if (viewModel.isWaitListed)
+                SplashScreenFragmentDirections.actionToNavWaitlisted()
+            else
+                SplashScreenFragmentDirections.actionSplashScreenToMain()
+        } else {
+            SplashScreenFragmentDirections.actionSplashScreenToRegister()
         }
     }
 }

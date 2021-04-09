@@ -98,7 +98,7 @@ class LoginFragment :
         findNavController().navigate(
             when {
                 response.isWaitlisted ->
-                    LoginFragmentDirections.actionLoginToWaitingList()
+                    LoginFragmentDirections.actionToNavWaitlisted()
 
                 response.userProfile?.username.isNullOrEmpty() ->
                     LoginFragmentDirections.actionLoginToRegister()

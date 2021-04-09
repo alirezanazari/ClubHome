@@ -14,11 +14,11 @@
             android:id="@+id/action_login_to_register"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_login_to_waitingList"
-            app:destination="@id/waitingListFragment" />
-        <action
             android:id="@+id/action_login_to_main"
             app:destination="@id/nav_main" />
+        <action
+            android:id="@+id/action_to_nav_waitlisted"
+            app:destination="@id/nav_waitlisted" />
     </fragment>
 
     <fragment
@@ -31,11 +31,7 @@
             app:destination="@id/nav_main" />
     </fragment>
 
-    <fragment
-        android:id="@+id/waitingListFragment"
-        android:name="ir.alirezanazari.clubhome.ui.waiting.WaitingListFragment"
-        android:label="WaitingListFragment"
-        tools:layout="@layout/fragment_waiting_list" />
-
     <include app:graph="@navigation/nav_main" />
+
+    <include app:graph="@navigation/nav_waitlisted" />
 </navigation>

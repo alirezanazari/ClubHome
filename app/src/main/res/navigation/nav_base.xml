@@ -16,10 +16,15 @@
         <action
             android:id="@+id/action_splashScreen_to_register"
             app:destination="@id/nav_register" />
+        <action
+            android:id="@+id/action_to_nav_waitlisted"
+            app:destination="@id/nav_waitlisted" />
     </fragment>
 
     <include app:graph="@navigation/nav_main" />
 
     <include app:graph="@navigation/nav_register" />
+
+    <include app:graph="@navigation/nav_waitlisted" />
 
 </navigation>
