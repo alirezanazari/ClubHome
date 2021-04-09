@@ -47,15 +47,30 @@
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/codeEditText"
+        style="@style/Input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/white_round_rectangle"
+        android:gravity="center"
+        android:hint="@string/verification_code"
+        android:inputType="number"
+        android:maxLength="5"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/phoneLayout" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/actionButton"
-        android:layout_width="wrap_content"
         style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="20dp"
         android:enabled="false"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
