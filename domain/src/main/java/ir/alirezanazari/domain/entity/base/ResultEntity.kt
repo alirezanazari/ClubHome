@@ -16,5 +16,6 @@ sealed class ResultEntity<out R> {
         }
     }
 
+    fun isSuccessful() = this is Success
 }
 
