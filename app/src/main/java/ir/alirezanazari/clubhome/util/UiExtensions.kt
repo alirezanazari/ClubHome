@@ -33,3 +33,7 @@ fun View.showKeyboard() {
         InputMethodManager.SHOW_IMPLICIT
     )
 }
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
