@@ -5,4 +5,6 @@
     <string name="next">Next</string>
     <string name="loading">Loading</string>
     <string name="verification_code">Verification code</string>
+    <string name="verify_code">Verify</string>
+    <string name="phone_number_is_wrong">Phone number is wrong.</string>
 </resources>
