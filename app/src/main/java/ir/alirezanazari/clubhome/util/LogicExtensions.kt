@@ -20,7 +20,7 @@ inline fun <reified T> ResultEntity<T>.updateOnSuccess(liveData: MutableLiveData
 }
 
 fun String.isPhoneNumber() : Boolean {
-    return this.length > 10
+    return this.length >= 11
 }
 
 fun Any.log(message: String) {
