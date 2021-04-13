@@ -5,6 +5,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 
 // Written by Alireza Nazari, <@ali_rezaNazari> <a.alirezaNazari@gmail.com>.
@@ -41,3 +42,5 @@ fun View.visible() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+fun Fragment.getColor(id: Int) = ResourcesCompat.getColor(resources, id, null)
