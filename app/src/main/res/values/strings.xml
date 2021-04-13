@@ -7,4 +7,6 @@
     <string name="verification_code">Verification code</string>
     <string name="verify_code">Verify</string>
     <string name="phone_number_is_wrong">Phone number is wrong.</string>
+    <string name="msg_wait_list">You\'re waiting for someone to invite you to Clubhouse. Your account is currently inactive.</string>
+    <string name="logout">Logout</string>
 </resources>
