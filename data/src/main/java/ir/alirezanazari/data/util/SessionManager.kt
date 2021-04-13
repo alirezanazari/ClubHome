@@ -40,6 +40,12 @@ class SessionManager constructor(private val context: Context) {
             .apply()
     }
 
+    fun logout() {
+        userID = null
+        userToken = null
+        write()
+    }
+
     companion object {
         private const val PREF_SESSION = "session"
         private const val PREF_DEVICE_ID = "device_id"
